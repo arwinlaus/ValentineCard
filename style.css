@@ -97,5 +97,13 @@ h1 {
     text-align: right; /* Moves your name to the bottom right like a real signature */
     margin-top: 10px;
 }
+.card-container {
+    z-index: 10; /* Ensures the card sits on top of the background */
+    position: relative;
+    width: 350px;
+    height: 500px; 
+    cursor: pointer;
+    perspective: 1200px;
+}
 
 
