@@ -4,8 +4,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* MAKE SURE TO SAVE YOUR IMAGE AS background.jpg */
-    background: url('love.jpg') no-repeat center center;
+    /* This uses the image you uploaded */
+    background: url('image_40af7f.png') no-repeat center center;
     background-size: cover;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
@@ -13,13 +13,24 @@ body {
 
 .card-container {
     position: relative;
-    width: 380px;
-    height: 250px;
+    width: 350px;
+    height: 500px; /* Tall card design */
     cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Essential for the 3D effect */
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    border-radius: 15px;
+}
+
+/* This matches your Script.js class toggle */
+.card-container.is-open .card-inner {
+    transform: rotateY(-180deg);
 }
 
 .card-front, .card-inside {
@@ -28,129 +39,44 @@ body {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-/* Designing the Front exactly like your photo */
 .card-front {
-    background-color: #c62828; /* Deep Valentine Red */
-    color: white;
-    z-index: 2;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.card-front h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3rem;
-    margin: 10px 0;
-    font-weight: normal;
-}
-
-.decoration {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.line {
-    width: 50px;
-    height: 1px;
-    background-color: white;
-}
-
-/* Designing the Inside Message */
-.card-inside {
-    background-color: #fffafa;
-    color: #c62828;
-    transform: rotateY(180deg);
-    padding: 30px;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.card-inside h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.signature {
-    margin-top: 20px;
-    font-style: italic;
-    font-weight: 600;
-}
-
-/* The Click Animation */
-.card-container.is-open {
-    transform: rotateY(180deg) scale(1.1);
-}
-
-/* 1. Updated Card Container Height */
-.card-container {
-    position: relative;
-    width: 350px;       /* Width stays similar */
-    height: 450px;      /* Increased height for a "tall" card look */
-    cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    border-radius: 15px;
-}
-
-/* 2. Updated Inside Layout */
-.card-inside {
-    background-color: #fffafa;
-    color: #c62828;
-    transform: rotateY(180deg);
-    padding: 30px;      /* More padding for a premium feel */
-    text-align: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 15px;
-}
-
-/* 3. Larger Scroll Area */
-.scroll-message {
-    overflow-y: auto; 
-    max-height: 280px;  /* Increased this so more of your message shows */
-    margin: 15px 0;
-    padding: 0 15px;
-    font-size: 1.05rem; /* Slightly larger text for better readability */
-    line-height: 1.6;
-    text-align: left;
-    scrollbar-width: thin; /* Firefox support */
-    scrollbar-color: #ffcdd2 transparent;
-}
-
-/* 4. Signature Styling */
-.signature {
-    margin-top: 10px;
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.8rem;
-    color: #b71c1c;
-}
-
-/* --- Keep your existing .card-front and animation CSS --- */
-.card-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
     background-color: #c62828;
     color: white;
-    z-index: 2;
-    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
-.card-container.is-open {
-    transform: rotateY(180deg) scale(1.05);
+.card-inside {
+    background-color: #fffafa;
+    color: #c62828;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.scroll-message {
+    overflow-y: auto;
+    max-height: 300px;
+    margin: 15px 0;
+    text-align: left;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    font-family: 'Great Vibes', cursive;
+}
+
+.signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
 }
